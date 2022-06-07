@@ -32,7 +32,7 @@ class Api::AnimalsController < ApplicationController
     end
 
     def animal_params
-      params.require(:animal).permit(:name, :age)
+      params.require(:animal).permit(:name, :species, :age)
     end
 
     def set_animal

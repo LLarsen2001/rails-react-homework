@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import AnimalForm from "./AnimalForm";
+
 
 function App() {
   const [animals, setAnimals] = useState(null);
@@ -11,7 +13,11 @@ function App() {
     getAnimals();
   }, []);
 
-  const getAnimals = async () => {
+  const addAnimal = (animal)=>{
+    setAnimals([animal, ...animals]);
+  }
+
+  const getAnimals = async() => {
     try {
       let res = await axios.get("/api/animals");
       // it is not always going to be res.data
@@ -49,6 +55,7 @@ function App() {
 
   return (
     <div className="App">
+      <AnimalForm addAnimal={addAnimal} />
       <h1>Animals</h1>
       <div>{renderAnimals()}</div>
     </div>
