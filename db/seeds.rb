@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-Animal.create(name:'Eagle', age:10)
-Animal.create(name:'Dog', age:10)
-Animal.create(name:'Cow', age:6)
-Animal.create(name:'Turtle', age:65)
+Animal.create(name:'Kevin', age:10, species:'Eagle')
+Animal.create(name:'James', age:11, species:'Dog')
+Animal.create(name:'Michel', age:23, species:'Whale')
+Animal.create(name:'Marc', age:60, species:'Turtle')
