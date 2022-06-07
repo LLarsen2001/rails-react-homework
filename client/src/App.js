@@ -36,7 +36,8 @@ function App() {
     return animals.map((d) => {
       return (
         <div key={d.id} style={{ margin: "20px", border: "1px solid" }}>
-          <h1>Species: {d.name}</h1>
+          <h1>Name: {d.name}</h1>
+          <h2>Species: {d.species}</h2>
           <h2>
             Age:
             {d.age}
