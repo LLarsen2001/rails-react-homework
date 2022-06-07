@@ -6,13 +6,13 @@ class Api::AnimalsController < ApplicationController
     end
 
     def show
-      render json: @Animal
+      render json: @animal
     end
 
     def create 
-      @Animal = Animal.new(animal_params)
-      if @Animal.save
-        render json: @Animal
+      @animal = Animal.new(animal_params)
+      if @animal.save
+        render json: @animal
       else
         # todo err
       end
@@ -20,17 +20,19 @@ class Api::AnimalsController < ApplicationController
     
     def update
       if @animal.update(animal_params)
-        render Json: @animal
+        render json: @animal
       else
         # todo err
       end
+
     end
+
     def destroy
       render json: @animal.destroy
     end
 
     def animal_params
-      prams.require(:dish).permit(:name, :price, :description)
+      params.require(:animal).permit(:name, :age)
     end
 
     def set_animal
