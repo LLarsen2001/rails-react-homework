@@ -3,7 +3,6 @@ import axios from "axios";
 import "./App.css";
 import AnimalForm from "./AnimalForm";
 
-
 function App() {
   const [animals, setAnimals] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,11 +12,16 @@ function App() {
     getAnimals();
   }, []);
 
-  const addAnimal = (animal)=>{
+  const addAnimal = (animal) => {
     setAnimals([animal, ...animals]);
-  }
+  };
 
-  const getAnimals = async() => {
+  const deletAnimal = (id) => {
+    let newAnimals = todos.filter((d) => d.id !== id);
+    setAnimals(newAnimals);
+  };
+
+  const getAnimals = async () => {
     try {
       let res = await axios.get("/api/animals");
       // it is not always going to be res.data
@@ -48,6 +52,7 @@ function App() {
             Age:
             {d.age}
           </h2>
+          <button onClick={() => props.deletAnimal(props.id)}>delete</button>
         </div>
       );
     });
