@@ -30,6 +30,8 @@ class Api::AnimalsController < ApplicationController
     def destroy
       render json: @animal.destroy
     end
+      private
+      
 
     def animal_params
       params.require(:animal).permit(:name, :species, :age)

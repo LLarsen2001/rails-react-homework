@@ -1,24 +1,27 @@
 import axios from "axios";
 import { useState } from "react";
-import UpdateForm from "./UpdateAnimalForm";
 
-const AnimalForm = (props) => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [species, setSpecies] = useState("");
+const UpdateForm = (props) => {
+  const [name, setName] = useState(props.name);
+  const [age, setAge] = useState(props.age);
+  const [species, setSpecies] = useState(props.species);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ name, age, species });
     try {
-      let res = await axios.post("/api/animals", { name, age, species });
-      console.log(res.data);
-      props.addAnimal(res.data);
+      let res = await axios.put(`/api/animals/${props.id}`, {
+        name,
+        age,
+        species,
+      });
+      console.log(res);
+      props.updateAnimal(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
+  console.log(props);
   return (
     <div>
       <h1>Form</h1>
@@ -38,4 +41,4 @@ const AnimalForm = (props) => {
     </div>
   );
 };
-export default AnimalForm;
+export default UpdateForm;

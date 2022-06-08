@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import AnimalForm from "./AnimalForm";
+import UpdateForm from "./UpdateAnimalForm";
 
 function App() {
   const [animals, setAnimals] = useState(null);
@@ -16,11 +17,14 @@ function App() {
     setAnimals([animal, ...animals]);
   };
 
-  const deletAnimal = (id) => {
-    let newAnimals = todos.filter((d) => d.id !== id);
+  const deleteAnimal = (id) => {
+    let newAnimals = animals.filter((d) => d.id !== id);
     setAnimals(newAnimals);
   };
-
+  const updateAnimal = (animal) => {
+    let updatedAnimal = animals.map((d) => (d.id === animal.id ? animal : d));
+    setAnimals(updatedAnimal);
+  };
   const getAnimals = async () => {
     try {
       let res = await axios.get("/api/animals");
@@ -52,7 +56,8 @@ function App() {
             Age:
             {d.age}
           </h2>
-          <button onClick={() => props.deletAnimal(props.id)}>delete</button>
+          <button onClick={() => deleteAnimal(d.id)}>delete</button>
+          <UpdateForm {...d} updateAnimal={updateAnimal} />
         </div>
       );
     });
@@ -61,6 +66,7 @@ function App() {
   return (
     <div className="App">
       <AnimalForm addAnimal={addAnimal} />
+
       <h1>Animals</h1>
       <div>{renderAnimals()}</div>
     </div>

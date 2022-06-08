@@ -1,24 +1,23 @@
-# README
+$ git clone <ssh-link> project-folder-name
+$ cd project-folder-name
+// rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+// installs ruby gems
+$ bundle
 
-Things you may want to cover:
+// create and migrate db \* db:seed if there is a seed file
+$ rails db:create db:migrate db:seed
 
-* Ruby version
+// start server
+$ rails s -p 3001
 
-* System dependencies
+## react
 
-* Configuration
+// REMEMBER TO CD INTO CLIENT DIRECTORY
+$ cd client
+$ yarn
+$ yarn start
 
-* Database creation
+## Github
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+// add contributors
