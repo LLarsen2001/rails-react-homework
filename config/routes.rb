@@ -14,6 +14,15 @@ Rails.application.routes.draw do
  
     delete '/animals/:id', to: 'animals#destroy' # destroy one dish
 
+    get '/users', to:'users#index' # return all dishes
+
+    post '/users', to:'users#create' # create one dish
+ 
+    get '/users/:id', to: 'users#show' # returns one dish
+   
+    put '/users/:id', to: 'users#update' # update one dish
+ 
+    delete '/users/:id', to: 'users#destroy' # destroy one dish
   end
   
 

@@ -5,9 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+
+User.destroy_all
 
 
 Animal.create(name:'Kevin', age:10, species:'Eagle')
 Animal.create(name:'James', age:11, species:'Dog')
 Animal.create(name:'Michel', age:23, species:'Whale')
 Animal.create(name:'Marc', age:60, species:'Turtle')
+
+
+10.times do 
+  User.create(username: Faker::Name.name, age:Faker::Number.number(digits: 2))
+end
